@@ -3,7 +3,7 @@
 
 string="Best School"
 i=0
-while ((i <=10))
+while [ $i -le 10 ]
 do 
 	echo "$string"
 	((i++))
