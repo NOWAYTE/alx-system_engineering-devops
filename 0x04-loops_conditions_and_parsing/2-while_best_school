@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script displays "Best Schools" 10 times
+
+string="Best School"
+i=0
+while ((i <=10))
+do 
+	echo "$string"
+	((i++))
+done
