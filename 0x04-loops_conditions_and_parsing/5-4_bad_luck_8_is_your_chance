@@ -14,5 +14,6 @@ do
 		echo "Best School"
 	fi
 	((i++))
+
 done
 
