@@ -4,16 +4,14 @@
 i=0
 while [ $i -lt 10 ]
 do
-	echo "Best School"
-
-	if [ $i -eq 2 ]
+	if [ $i -eq 3 ]
 	then
 		echo "bad luck"
-	fi
-
-	if [ $i -eq 5 ]
+	elif [ $i -eq 7 ]
 	then
-		echo "good luck"
+		echo "bad luck"
+	else
+		echo "Best School"
 	fi
 	((i++))
 done
