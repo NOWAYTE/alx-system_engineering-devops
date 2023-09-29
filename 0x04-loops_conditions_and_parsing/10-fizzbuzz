@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# script for FizzBuzz game
+n=0
+
+while [ $n -le 100 ]
+do
+    if [ $(( n % 3 )) -eq 0 -a $(( n % 5 )) -eq 0 ]
+    then
+        echo "FizzBuzz"
+    elif [ $(( n % 3 )) -eq 0 ]
+
+    then
+        echo "Fizz"
+    elif [ $(( n % 5 )) -eq 0 ]
+
+    then
+        echo "Buzz"
+    else
+        echo $n
+    fi
+    ((n++))
+done
