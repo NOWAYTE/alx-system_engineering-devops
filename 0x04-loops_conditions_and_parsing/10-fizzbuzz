@@ -18,5 +18,5 @@ do
     else
         echo $n
     fi
-	n=$((n + 1))
+	((n++))
 done
