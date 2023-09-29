@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# This Script loops from 1 to 10
+
+i=0
+while [ $i -lt 10 ]
+do
+	echo "Best School"
+
+	if [ $i -eq 2 ]
+	then
+		echo "bad luck"
+	fi
+
+	if [ $i -eq 5 ]
+	then
+		echo "good luck"
+	fi
+	((i++))
+done
+
