@@ -7,7 +7,7 @@ do
 	echo "Hour:$i"
 
 	x=0
-	while [ $x -le 60 ]
+	while [ $x -le 59 ]
 	do
 		echo $x
 		((x++))
