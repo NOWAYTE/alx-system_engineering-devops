@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script contains the content of the file /etc/passwd suign the while loop + IFS
+
+while IFS=: read -r _ USERNAME _ _GROUP_ID _ HOME_DIRECTORY _ _COMMAND _ USER _ _PASSWORD _ _ INFO _; do
+	echo " The user $USERNAME is part of the $GROUP_ID gang, lives in $HOME_DIRECTORY and rides $COMMAND. $USER place is protected by te passcode $PASSWORD, more infor abou the user here: $INFO "
+done < /etc/passwd
