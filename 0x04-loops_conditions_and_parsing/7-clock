@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # A script that diplsays the time for 12 hours and 59 minutes
-
 i=0
+
+
 while [ $i -le 12 ]
 do
 	echo "Hour:$i"
