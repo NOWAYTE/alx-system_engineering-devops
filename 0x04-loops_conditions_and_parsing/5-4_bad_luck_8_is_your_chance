@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script prints "bad luck" 4th iteration, "good luck" on the 8th iteration, and "Best School" for other iterations
+i=1
 
-i=0
 while [ $i -le 10 ]
 do
     if [ $i -eq 4 ]
