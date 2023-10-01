@@ -1,9 +1,6 @@
-#!/usr/bash/emv bash
-# This is a script that displays the content of the file /etc/passwd
+#!/usr/bin/env bash
+# This is a script that diplays contents of /etc/passwd
 
-while IFS=: read -r user _ uid _ _ home _; do
-    echo "username: $user"
-    echo "user id: $uid"
-    echo "Home directory path for the user: $home"
-done < /etc/passwd
-
+while IFS= read -r line; do
+	echo "$line"
+done </etc/passwd
