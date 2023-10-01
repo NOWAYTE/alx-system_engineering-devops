@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
-# This Script loops from 1 to 10
+# This script prints "bad luck" 4th iteration, "good luck" on the 8th iteration, and "Best School" for other iterations
+n=1
 
-i=1
-while [ $i -le 10 ]
+while [ $n -le 10 ]
 do
-	if [ $i -eq 4 ]
-	then
-		echo "bad luck"
-	elif [ $i -eq 8 ]
-	then
-		echo "bad luck"
-	else
-		echo "Best School"
-	fi
-	((i++))
-
+    if [ $n -eq 4 ]
+    then
+        echo "bad luck"
+    elif [ $n -eq 8 ]
+    then
+        echo "good luck"
+    else
+        echo "Best School"
+    fi
+    n=$(( n + 1 ))
 done
 
