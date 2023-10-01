@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # This script displays "Best Schools" 10 times
-string=Best School
+
+string="Best School"
 i=0
-while [ $i -le 10 ]
+while [ $i -lt 10 ]
 do 
 	echo "$string"
 	((i++))
