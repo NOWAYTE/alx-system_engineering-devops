@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # This script prints "bad luck" 4th iteration, "good luck" on the 8th iteration, and "Holberton School" for other iterations
-n=1
 
-while [ $n -le 20 ]
+i=1
+while [ $i -le 20 ]
 do
-    echo $n
+    echo $i
     case $n in
         4)
             echo "bad luck from China"
@@ -18,5 +18,5 @@ do
         *)
             ;;
     esac
-    n=$(( n + 1 ))
+	((i++))
 done
