@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 # This a script that sorts the list of IP and HTTP status code
-
 awk '{print $1, $9}' apache-access.log | sort -rn
