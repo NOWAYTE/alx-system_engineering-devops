@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# A script that configures Ubuntu server to localhost resolves to 127.0.0.2
+# facebook.com resolves to 8.8.8.8
+
+sudo sed -i 's/localhost$/localhost 127.0.0.2/' /etc/hosts
+sudo sed -i 's/facebook.com$/facebook.com 8.8.8.8/' /etc/hosts
