@@ -1,6 +1,6 @@
-Host RSA 
-	18.204.6.185
-	User ubuntu
-	IdentityFile ~/.ssh/school
-	PreferredAuthentications 
-	paswordAuthentication no
+Host RSA
+    HostName 18.204.6.185
+    User ubuntu
+    IdentityFile ~/.ssh/school
+    PreferredAuthentications publickey
+    PasswordAuthentication no
