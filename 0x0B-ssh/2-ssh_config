@@ -1,5 +1,5 @@
 Host RSA
-    HostName 18.204.6.185
+    HostName 54.237.4.5
     User ubuntu
     IdentityFile ~/.ssh/school
     PreferredAuthentications publickey
