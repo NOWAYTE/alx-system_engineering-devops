@@ -1,6 +1,0 @@
-Host RSA
-    HostName 54.237.10.209
-    User ubuntu
-    IdentityFile ~/.ssh/school
-    PreferredAuthentications publickey
-    PasswordAuthentication no
