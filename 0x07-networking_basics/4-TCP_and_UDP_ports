@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Dispays all sockets
+
+netstat -lp
