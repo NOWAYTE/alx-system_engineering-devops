@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# A script that displays all active IPv4 ipS on the machie its executed on
+
+ifconfig -a | grep inet | cut -d: -f2 | cut -d" "  -f1
