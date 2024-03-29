@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# A script that transfers a file from our client to server
+
+if  [ $# -lt 4 ]
+then
+	echo " Usage: 0-transfer_file PATH_TO_FILE_IP username PATH_TO_SSH_KEY"
+else
+	scp -o "$4" "$1" "$3@$2":~
+fi
