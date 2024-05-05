@@ -38,7 +38,7 @@ frontend nowayte-tech-frontend
     bind *:80
     default_backend nowayte-tech-backend
 
-backend clickviral-tech-backend
+backend nowayte-tech-backend
     balance roundrobin
     server 151666-web-01 52.86.237.76:80 check
     server 151666-web-02 35.153.18.133:80 check
