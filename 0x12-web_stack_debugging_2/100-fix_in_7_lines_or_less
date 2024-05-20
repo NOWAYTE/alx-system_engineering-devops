@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Configure nginx to run as the nginx user
+#Configure nginx to run as the nginx user
 
 sudo service nginx stop
 sudo sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
