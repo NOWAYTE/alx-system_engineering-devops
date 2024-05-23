@@ -10,8 +10,8 @@ if __name__ == '__main__':
     m_url = 'https://jsonplaceholder.typicode.com'
     t_url = m_url + "/user/{}/todos".format(argv[1])
     n_url = m_url + "/users/{}".format(argv[1])
-    t_result = get(t_url).json()
-    n_result = get(n_url).json()
+    t_result = get(todo_url).json()
+    n_result = get(name_url).json()
 
     t_num = len(t_result)
     t_complete = len([todo for todo in t_result
