@@ -26,5 +26,4 @@ if __name__ == "__main__":
         write = DictWriter(f, fieldnames=head, quoting=QUOTE_ALL)
         write.writerows(t_list)
     with open("{}.json".format(argv[1]), 'w') as f:
-                dump({argv[1]: t_list}, f)
-
+        dump({argv[1]: t_list}, f)
