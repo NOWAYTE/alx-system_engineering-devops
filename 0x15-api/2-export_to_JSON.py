@@ -4,6 +4,7 @@
 from csv import DictWriter, QUOTE_ALL
 from requests import get
 from sys import argv
+from json import dump
 
 
 if __name__ == "__main__":
