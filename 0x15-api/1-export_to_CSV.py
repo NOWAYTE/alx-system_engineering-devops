@@ -8,8 +8,8 @@ from sys import argv
 
 if __name__ == "__main__":
     main = "https://jsonplaceholder.typicode.com"
-    todo = m_url + "/user/{}/todos".format(argv[1])
-    name = m_url + "/users/{}".format(argv[1])
+    todo = main + "/user/{}/todos".format(argv[1])
+    name = main + "/users/{}".format(argv[1])
     t_result = get(todo).json()
     n_result = get(name).json()
 
@@ -22,5 +22,5 @@ if __name__ == "__main__":
         t_list.append(t_dict)
     with open("{}.csv".format(argv[1]), 'w', newline='') as f:
         head = ["user_ID", "username", "completed", "task"]
-        write = DictWriter(f, fieldnames=header, quoting=QUOTE_ALL)
-        write.writerows(todo_list)
+        write = DictWriter(f, fieldnames=head, quoting=QUOTE_ALL)
+        write.writerows(t_list)
