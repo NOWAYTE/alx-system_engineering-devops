@@ -40,8 +40,8 @@ frontend nowayte-tech-frontend
 
 backend nowayte-tech-backend
     balance roundrobin
-    server 151666-web-01 52.86.237.76:80 check
-    server 151666-web-02 35.153.18.133:80 check
+    server 151666-web-01 52.146.82.231:80 check
+    server 151666-web-02 100.25.196.83:80 check
 "
 
 # shellcheck disable=SC2154
