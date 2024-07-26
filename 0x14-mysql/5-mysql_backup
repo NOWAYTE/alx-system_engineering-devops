@@ -8,4 +8,4 @@ arch_file="${date}.tar.gz"
 
 msqldump -u root -p"${password}" --all-databases --single-transaction --quick --lock-tables=false > "${file}"
 
-tar -czf "${file}" "${arch_file}"
+tar -czf "${arch_file}" "${file}"
