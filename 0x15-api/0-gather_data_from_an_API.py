@@ -2,10 +2,9 @@
 """
 Uses the JSON placeholder API to query data about an employee
 """
-
-import urllib.request
 import json
 import sys
+import urllib.request
 
 if __name__ == '__main__':
     main_url = 'https://jsonplaceholder.typicode.com'
