@@ -12,8 +12,6 @@ import sys
 if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/"
     user = sys.argv[1]
-
-    
     response = requests.get(url + "users/{}".format(user)).json()
     name = response.get("username")
 
@@ -26,7 +24,7 @@ if __name__ == "__main__":
         info = {
                 "task": i.get("title"),
                 "completed": i.get("completed"),
-                "username":i.get("user")
+                "username": i.get("user")
                 }
         data[user].append(info)
 
