@@ -1,26 +1,34 @@
 #!/usr/bin/python3
+
 """
-Query data about an employee
+Query data of an employee
 
 """
 
-import csv
 import json
+import requests
 import sys
-import urllib.request
 
 if __name__ == "__main__":
+    url = "https://jsonplaceholder.typicode.com/"
+    user = sys.argv[1]
 
-    def fetch(url):
-        with urllib.request.urlopen(url) as response:
-            data = json.loads(url.read().decode())
+    
+    response = requests.get(url + "users/{}".format(user)).json()
+    name = response.get("username")
 
-            return data
+    params = {"userId": user}
+    todos = requests.get(url + "todos", params=params).json()
 
-    def save(user, name, todo):
-        file = f"{user}.csv"
+    data = {user: []}
 
-        with open(file, mode="w") as file:
-            for i in todos:
-                writer.writerow(
-                        [user, name. todo.get("completed"), todo.get("title")]
+    for i in todos:
+        info = {
+                "task": i.get("title"),
+                "completed": i.get("completed"),
+                "username":i.get("user")
+                }
+        data[user].append(info)
+
+    with open("{}.json".format(user), mode="w") as file:
+        json.dump(data, file, indent=4)
