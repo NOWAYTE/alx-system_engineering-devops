@@ -1,29 +1,26 @@
 #!/usr/bin/python3
-"""exports to CSV"""
+"""
+Query data about an employee
 
-from csv import DictWriter, QUOTE_ALL
-from requests import get
-from sys import argv
-from json import dump
+"""
 
+import csv
+import json
+import sys
+import urllib.request
 
 if __name__ == "__main__":
-    main = "https://jsonplaceholder.typicode.com"
-    todo = main + "/user/{}/todos".format(argv[1])
-    name = main + "/users/{}".format(argv[1])
-    t_result = get(todo).json()
-    n_result = get(name).json()
 
-    t_list = []
-    for todo in t_result:
-        t_dict = {}
-        t_dict.update({"user_ID": argv[1], "username": n_result.get(
-            "username"), "completed": todo.get("completed"),
-                          "task": todo.get("title")})
-        t_list.append(t_dict)
-    with open("{}.csv".format(argv[1]), 'w', newline='') as f:
-        head = ["user_ID", "username", "completed", "task"]
-        write = DictWriter(f, fieldnames=head, quoting=QUOTE_ALL)
-        write.writerows(t_list)
-    with open("{}.json".format(argv[1]), 'w') as f:
-        dump({argv[1]: t_list}, f)
+    def fetch(url):
+        with urllib.request.urlopen(url) as response:
+            data = json.loads(url.read().decode())
+
+            return data
+
+    def save(user, name, todo):
+        file = f"{user}.csv"
+
+        with open(file, mode="w") as file:
+            for i in todos:
+                writer.writerow(
+                        [user, name. todo.get("completed"), todo.get("title")]
