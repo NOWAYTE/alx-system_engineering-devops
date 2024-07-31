@@ -2,31 +2,34 @@
 """
 Uses the JSON placeholder API to query data about an employee
 """
+
 import json
 import sys
 import urllib.request
 
 if __name__ == '__main__':
     main_url = 'https://jsonplaceholder.typicode.com'
-    user = sys.argv[1]
+    user_id = sys.argv[1]
 
-    todo = f"{main_url}/users/{user}/todos"
-    name_url = f"{main_url}/users/{user}"
+    todo_url = f"{main_url}/users/{user_id}/todos"
+    name_url = f"{main_url}/users/{user_id}"
 
-    with urllib.request.urlopen(todo) as response:
-        result = json.loads(response.read().decode())
+    # Fetch todos
+    with urllib.request.urlopen(todo_url) as response:
+        todos = json.loads(response.read().decode())
 
+    # Fetch user information
     with urllib.request.urlopen(name_url) as response:
-        n_result = json.loads(response.read().decode())
+        user = json.loads(response.read().decode())
 
-    t_num = len(result)
-    complete = len([todo for todo in result if todo.get("completed")])
-    name = n_result.get("name")
+    # Calculate task information
+    total_tasks = len(todos)
+    completed_tasks = len([todo for todo in todos if todo.get("completed")])
+    employee_name = user.get("name")
 
-    print(
-            "Employee {} is done with tasks({}/{}):"
-            .format(name, complete, t_num)
-            )
-    for todo in result:
+    # Print results
+    print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
+    for todo in todos:
         if todo.get("completed"):
-            print("\t {}".format(todo.get("title")))
+            print(f"\t {todo.get('title')}")
+
