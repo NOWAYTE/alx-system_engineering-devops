@@ -1,30 +1,32 @@
 #!/usr/bin/python3
-"""For a given employee ID, returns information about
-their TODO list progress"""
-
-import requests
+"""
+Uses the JSON placeholder API to query data about an employee
+"""
+import json
 import sys
+import urllib.request
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    main_url = 'https://jsonplaceholder.typicode.com'
+    user = sys.argv[1]
 
-    userId = sys.argv[1]
-    user = requests.get("https://jsonplaceholder.typicode.com/users/{}"
-                        .format(userId))
+    todo = f"{main_url}/users/{user}/todos"
+    name_url = f"{main_url}/users/{user}"
 
-    name = user.json().get('name')
+    with urllib.request.urlopen(todo) as response:
+        result = json.loads(response.read().decode())
 
-    todos = requests.get('https://jsonplaceholder.typicode.com/todos')
-    totalTasks = 0
-    completed = 0
+    with urllib.request.urlopen(name_url) as response:
+        n_result = json.loads(response.read().decode())
 
-    for task in todos.json():
-        if task.get('userId') == int(userId):
-            totalTasks += 1
-            if task.get('completed'):
-                completed += 1
+    t_num = len(result)
+    complete = len([todo for todo in result if todo.get("completed")])
+    name = n_result.get("name")
 
-    print('Employee {} is done with tasks({}/{}):'
-          .format(name, completed, totalTasks))
-
-    print('\n'.join(["\t " + task.get('title') for task in todos.json()
-          if task.get('userId') == int(userId) and task.get('completed')]))
+    print(
+            "Employee {} is done with tasks({}/{}):"
+            .format(name, complete, t_num)
+            )
+    for todo in result:
+        if todo.get("completed"):
+            print("\t {}".format(todo.get("title")))
