@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Uses the JSON placeholder API to query data about an employee
+Query data about an employee
 """
 import json
 import sys
