@@ -1,30 +1,33 @@
 #!/usr/bin/python3
-'''
-gather employee data from API
-'''
+"""
+Uses the JSON placeholder API to query data about an employee
+"""
 
-import re
-import requests
+import urllib.request
+import json
 import sys
 
-REST_API = "https://jsonplaceholder.typicode.com"
-
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        if re.fullmatch(r'\d+', sys.argv[1]):
-            id = int(sys.argv[1])
-            req = requests.get('{}/users/{}'.format(REST_API, id)).json()
-            task_req = requests.get('{}/todos'.format(REST_API)).json()
-            emp_name = req.get('name')
-            tasks = list(filter(lambda x: x.get('userId') == id, task_req))
-            completed_tasks = list(filter(lambda x: x.get('completed'), tasks))
-            print(
-                'Employee {} is done with tasks({}/{}):'.format(
-                    emp_name,
-                    len(completed_tasks),
-                    len(tasks)
-                )
+    main_url = 'https://jsonplaceholder.typicode.com'
+    user = sys.argv[1]
+
+    todo = f"{main_url}/users/{user}/todos"
+    name_url = f"{main_url}/users/{user}"
+
+    with urllib.request.urlopen(todo) as response:
+        result = json.loads(response.read().decode())
+
+    with urllib.request.urlopen(name_url) as response:
+        n_result = json.loads(response.read().decode())
+
+    t_num = len(result)
+    complete = len([todo for todo in result if todo.get("completed")])
+    name = n_result.get("name")
+
+    print(
+            "Employee {} is done with tasks({}/{}):"
+            .format(name, complete, t_num)
             )
-            if len(completed_tasks) > 0:
-                for task in completed_tasks:
-                    print('\t {}'.format(task.get('title')))
+    for todo in result:
+        if todo.get("completed"):
+            print("\t {}".format(todo.get("title")))
