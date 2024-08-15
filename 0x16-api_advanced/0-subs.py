@@ -6,7 +6,10 @@ Queries Reddit API and returns the number of suscribers
 
 import requests
 
+
 def number_of_subscribers(subreddit):
+    """Returns the number of subscribers"""
+
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
 
     headers = {'User-Agent':  'My User Agent'}
@@ -18,4 +21,3 @@ def number_of_subscribers(subreddit):
         return data.get('data').get('subscribers')
     else:
         return 0
-    
