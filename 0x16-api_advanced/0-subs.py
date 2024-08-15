@@ -7,10 +7,15 @@ Queries Reddit API and returns the number of suscribers
 import requests
 
 def number_of_subscribers(subreddit):
-    url = "https://www.reddit.com/r/{}/".format(subreddit)
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
 
-    response = requests.get(url)
+    headers = {'User-Agent':  'My User Agent'}
+    response = requests.get(url, headers=headers)
 
-    print("{}".format(response.content))
+    if response.status_code == 200:
+        data = response.json()
 
-
+        return data.get('data').get('subscribers')
+    else:
+        return 0
+    
