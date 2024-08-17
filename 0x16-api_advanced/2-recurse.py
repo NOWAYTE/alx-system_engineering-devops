@@ -4,9 +4,8 @@ A recursive function that queries the Reddit API and returns
 a list containing the titles of all hot articles
 """
 
-
-
 import requests
+
 
 def recurse(subreddit, hot_list=[], after=None, count=0):
     """A recursive function that returns a list of hot articles"""
@@ -19,7 +18,12 @@ def recurse(subreddit, hot_list=[], after=None, count=0):
         "limit": 100
     }
 
-    response = requests.get(url, headers=headers, params=params, allow_redirects=False)
+    response = requests.get(
+            url,
+            headers=headers,
+            params=params,
+            allow_redirects=False
+            )
 
     if response.status_code != 200:
         return None
@@ -35,9 +39,3 @@ def recurse(subreddit, hot_list=[], after=None, count=0):
         return recurse(subreddit, hot_list, after, count)
 
     return hot_list
-
-# Example usage:
-# subreddit = "python"
-# hot_articles = recurse(subreddit)
-# print(hot_articles)
-
