@@ -1,7 +1,6 @@
-# Fixe apache error
+# Fixes Apache 500 error
 
-exec { 'Fix typo':
-  command => 'mv /var/www/html/wp-includes/class-wp-locale.phpp /var/www/html/wp-includes/class-wp-locale.php',
-  onlyif  => 'test -f /var/www/html/wp-includes/class-wp-locale.phpp',
+exec { 'fix-wordpress':
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+  path    => '/usr/local/bin/:/bin/'
 }
-
